@@ -77,7 +77,7 @@ async def new(ctx, arg2):
 
 @bot.command()
 async def clear(ctx, amount: int):
-	if (ctx.author.id == 322473542182502412):				
+	if (ctx.author.id == 322473542182502412 or ctx.author.id == 748132840616493086):	
 		await ctx.channel.purge(limit=amount)
 		await ctx.channel.send('Messages cleared!') 
 	else:
@@ -94,6 +94,9 @@ async def roast(ctx, user):
 	else:
 		await ctx.send("Oppassen vriend.")
 
+@bot.command()
+async def biertje(ctx):
+  await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 
 @bot.event
 async def on_message(message):
