@@ -152,7 +152,7 @@ async def help(ctx):
     for command in bot.commands:
         helptext+=f"!{command}\n"
     helptext+="```"
-    await ctx.author.send(helptext)
+    await ctx.channel.send(helptext)
 
 	
 
