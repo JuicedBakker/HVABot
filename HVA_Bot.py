@@ -176,7 +176,13 @@ if dag == "morgen":
 				await ctx.send(embed=embedToSend)
 """
 
-
+@bot.command(name="help", description="Returns all commands available")
+async def help(ctx):
+    helptext = "```\n"
+    for command in bot.commands:
+        helptext+=f"!{command}\n"
+    helptext+="```"
+    await ctx.channel.send(helptext)
 
 	
 
