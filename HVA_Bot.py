@@ -73,6 +73,11 @@ async def roast(ctx, user):
 async def on_message(message):
 	if "<@!806064513735852043>" in message.content.lower():
 		await message.channel.send("Hou je bek, Fred's bitch.")
+	if "vieze freddy" in message.content.lower():
+      	await message.channel.send(random.choice(freddy))
+    if "kanker" in message.content.lower() and message.author.id != 806064513735852043:
+      	await message.channel.send("Kanker boef!")
+	
 
 	await bot.process_commands(message)
 
