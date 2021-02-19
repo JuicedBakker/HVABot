@@ -146,7 +146,13 @@ def create_embed(description, datum, tijdStart, tijdEinde, docenten):
 	return embed
 
 
-
+@bot.command(name="help", description="Returns all commands available")
+async def help(ctx):
+    helptext = "```\n"
+    for command in bot.commands:
+        helptext+=f"!{command}\n"
+    helptext+="```"
+    await ctx.author.send(helptext)
 
 	
 
