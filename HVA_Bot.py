@@ -2,7 +2,10 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 import csv
+import datetime as dt
 from datetime import datetime
+from datetime import time
+from datetime import date
 from ics import Calendar as Calendar2
 import random
 import icalendar
@@ -126,6 +129,7 @@ async def les(ctx, dag):
 				docenten = x['Docenten']
 				embedToSend = create_embed(description, datum, tijdStart, tijdEinde, docenten)
 				await ctx.send(embed=embedToSend)
+	
 
 
 def create_embed(description, datum, tijdStart, tijdEinde, docenten):
@@ -138,21 +142,46 @@ def create_embed(description, datum, tijdStart, tijdEinde, docenten):
 	else:
 		linkNaam = "Link staat op DLO"
 		link = "https://dlo.mijnhva.nl/d2l/home"
+
 	embed=discord.Embed(title=f"{description}", description=None)
 	embed.add_field(name="Datum", value=f"{datum}", inline=False)
 	embed.add_field(name="Tijd", value=f"{tijdStart} - {tijdEinde}", inline=False)
 	embed.add_field(name="Docenten", value=f"{docenten}", inline=False)
 	embed.add_field(name="Locatie", value=f"[{linkNaam}]({link})", inline=False)
+
 	return embed
 
-
-
-
-	
-
-
-	
-
-
-
 bot.run(BOT_TOKEN)
+
+
+"""
+if dag == "morgen":
+		with open("Rooster/rooster.json", "r") as jsonFile:
+			roosterJson = json.load(jsonFile)
+		for x in roosterJson:
+			past = datetime.strptime(x['Start date'], "%Y-%m-%d")
+
+						
+			present = datetime.now()
+			tomorrow = present.date() + dt.timedelta(days=19)
+			
+			if (past.date() == tomorrow):
+				print("yes")
+				description = x['Description']
+				datum = x['Start date']
+				tijdStart = x['Start time']
+				tijdEinde = x['End time']
+				docenten = x['Docenten']
+				embedToSend = create_embed(description, datum, tijdStart, tijdEinde, docenten)
+				await ctx.send(embed=embedToSend)
+"""
+
+
+
+	
+
+
+	
+
+
+
