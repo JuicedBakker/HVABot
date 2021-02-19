@@ -77,6 +77,8 @@ async def on_message(message):
       	await message.channel.send(random.choice(freddy))
     if "kanker" in message.content.lower() and message.author.id != 806064513735852043:
       	await message.channel.send("Kanker boef!")
+	if "joost" in message.content.lower():
+		await message.channel.send("let op je woorden a mattie")
 	
 
 	await bot.process_commands(message)
