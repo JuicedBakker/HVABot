@@ -67,6 +67,14 @@ async def on_ready():
 
 	await bot.change_presence(status=discord.Status.online, activity=activity)
 
+@bot.command(name="help", description="Returns all commands available")
+async def help(ctx):
+    helptext = "```\n"
+    for command in bot.commands:
+        helptext+=f"!{command}\n"
+    helptext+="```"
+    await ctx.channel.send(helptext)
+
 @bot.command()
 async def new(ctx, arg2):
 	if (ctx.author.id == 322473542182502412):		
@@ -151,6 +159,8 @@ def create_embed(description, datum, tijdStart, tijdEinde, docenten):
 
 	return embed
 
+
+
 bot.run(BOT_TOKEN)
 
 
@@ -176,13 +186,7 @@ if dag == "morgen":
 				await ctx.send(embed=embedToSend)
 """
 
-@bot.command(name="help", description="Returns all commands available")
-async def help(ctx):
-    helptext = "```\n"
-    for command in bot.commands:
-        helptext+=f"!{command}\n"
-    helptext+="```"
-    await ctx.channel.send(helptext)
+
 
 	
 
