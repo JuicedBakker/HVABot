@@ -35,7 +35,12 @@ biertjes = [
   "wi386832/brouwerij-t-ij-ijwit",
   "wi231220/heineken-premium-pilsener",
   "wi170811/corona-extra-pils",
-  "wi388607/hertog-jan-tripel"
+  "wi388607/hertog-jan-tripel",
+  "wi2708/hertog-jan-pilsener-natuurzuiver-bier",
+  "wi210145/heineken-premium-pilsener-krat",
+  "wi232949/grolsch-pilsener-krat",
+  "wi227163/brand-pilsener-krat",
+  "wi2722/amstel-pilsener-krat"
 ]
 
 BOT_TOKEN = 'ODA2MDY0NTEzNzM1ODUyMDQz.YBkAFA.1l8oJjbNS6Kd2qbgox8_kLwwDsM'
@@ -122,7 +127,7 @@ async def biertje(ctx):
 	bierUrl = "https://www.ah.nl/producten/product/wi2708/hertog-jan-pilsener-natuurzuiver-bier"
 	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 	await ctx.send(f"{ctx.message.author.mention}, Huidige aanbieding bij Albert Heijn: \n\nHertog Jan Krat: ({bierUrl})")
-  await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
+	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 
 @bot.event
 async def on_message(message):
@@ -142,7 +147,7 @@ async def ah(ctx):
   for i in range(1, len(biertjes)):
     product = albert.Product(biertjes[i])
     if product.is_discounted:
-      list += f"- {product.brand}\n"
+      list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
   if len(list) < 1:
     await ctx.send("Niets is in de aanbieding")  
   else:
