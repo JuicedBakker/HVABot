@@ -107,6 +107,10 @@ async def roast(ctx, user):
 		await ctx.send("Oppassen vriend.")
 
 @bot.command()
+async def proost(ctx):
+  await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
+
+@bot.command()
 async def biertje(ctx):
 	bierUrl = "https://www.ah.nl/producten/product/wi2708/hertog-jan-pilsener-natuurzuiver-bier"
 	await ctx.send(f"{ctx.message.author.mention}, Huidige aanbieding bij Albert Heijn: \n\nHertog Jan Krat: ({bierUrl})")
