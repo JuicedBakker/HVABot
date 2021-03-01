@@ -107,7 +107,8 @@ async def roast(ctx, user):
 
 @bot.command()
 async def biertje(ctx):
-  await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
+	bierUrl = "https://www.ah.nl/producten/product/wi2708/hertog-jan-pilsener-natuurzuiver-bier"
+	await ctx.send(f"{ctx.message.author.mention}, Huidige aanbieding bij Albert Heijn: \n\nHertog Jan Krat: ({bierUrl})")
 
 @bot.event
 async def on_message(message):
@@ -141,13 +142,16 @@ async def les(ctx, dag):
 
 
 def create_embed(description, datum, tijdStart, tijdEinde, docenten):
-	if description == 'Research Skills':
+	print(description)
+	if description == "Research Skills":
+		print('yes')
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWNlMDgyNjUtYzY4YS00NzA1LWFmMTQtNWJmNzFkY2JiOWU5%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
-	if description == 'Project Agile Developement':
+	elif description == 'Project Agile Developement':
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
 	else:
+		print("sure")
 		linkNaam = "Link staat op DLO"
 		link = "https://dlo.mijnhva.nl/d2l/home"
 
