@@ -15,6 +15,7 @@ import json
 import requests
 from requests.models import get_auth_from_url
 import json
+import albert
 
 roasts = [
 	", je moeder is een man.",
@@ -25,6 +26,16 @@ roasts = [
 	", sukkel.",
 	", heeft seks met dode dieren.",
 	", je moeder is een plopkoek"
+]
+
+biertjes = [
+  "wi56312/leffe-blond-abdijbier",
+  "wi238769/texels-skuumkoppe",
+  "wi140290/kasteelbier-bruin",
+  "wi386832/brouwerij-t-ij-ijwit",
+  "wi231220/heineken-premium-pilsener",
+  "wi170811/corona-extra-pils",
+  "wi388607/hertog-jan-tripel"
 ]
 
 BOT_TOKEN = 'ODA2MDY0NTEzNzM1ODUyMDQz.YBkAFA.1l8oJjbNS6Kd2qbgox8_kLwwDsM'
@@ -111,6 +122,7 @@ async def biertje(ctx):
 	bierUrl = "https://www.ah.nl/producten/product/wi2708/hertog-jan-pilsener-natuurzuiver-bier"
 	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 	await ctx.send(f"{ctx.message.author.mention}, Huidige aanbieding bij Albert Heijn: \n\nHertog Jan Krat: ({bierUrl})")
+  await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 
 @bot.event
 async def on_message(message):
@@ -123,6 +135,18 @@ async def on_message(message):
 	if "joost" in message.content.lower():
 		await message.channel.send("let op je woorden a mattie")
 	await bot.process_commands(message)
+
+@bot.command()
+async def ah(ctx):
+  list = "Biertjes in de aanbieding:\n"
+  for i in range(1, len(biertjes)):
+    product = albert.Product(biertjes[i])
+    if product.is_discounted:
+      list += f"- {product.brand}\n"
+  if len(list) < 1:
+    await ctx.send("Niets is in de aanbieding")  
+  else:
+    await ctx.send(list)
 
 @bot.command()
 async def les(ctx, dag):
@@ -144,16 +168,13 @@ async def les(ctx, dag):
 
 
 def create_embed(description, datum, tijdStart, tijdEinde, docenten):
-	print(description)
-	if description == "Research Skills":
-		print('yes')
+	if description == 'Research Skills':
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWNlMDgyNjUtYzY4YS00NzA1LWFmMTQtNWJmNzFkY2JiOWU5%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
-	elif description == 'Project Agile Developement':
+	if description == 'Project Agile Developement':
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
 	else:
-		print("sure")
 		linkNaam = "Link staat op DLO"
 		link = "https://dlo.mijnhva.nl/d2l/home"
 
