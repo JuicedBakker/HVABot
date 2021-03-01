@@ -23,7 +23,8 @@ roasts = [
 	", je moeder is zo dik dat ze op een iPod ging zitten en zo werd de iPad gemaakt.",
 	", je moeder is zo dik, ze heeft cheat codes voor Wii Sport.",
 	", sukkel.",
-	", heeft seks met dode dieren."
+	", heeft seks met dode dieren.",
+	", je moeder is een plopkoek"
 ]
 
 BOT_TOKEN = 'ODA2MDY0NTEzNzM1ODUyMDQz.YBkAFA.1l8oJjbNS6Kd2qbgox8_kLwwDsM'
