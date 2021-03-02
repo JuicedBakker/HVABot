@@ -126,14 +126,14 @@ async def roast(ctx, user):
 async def biertje(ctx):
 	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 	list = "Biertjes in de aanbieding:\n"
-		for i in range(1, len(biertjes)):
-			product = albert.Product(biertjes[i])
-			if product.is_discounted:
-				list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
-			if len(list) < 1:
-				await ctx.send("Niets is in de aanbieding")  
-			else:
-				await ctx.send(list)
+	for i in range(1, len(biertjes)):
+		product = albert.Product(biertjes[i])
+		if product.is_discounted:
+			list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
+		if len(list) < 1:
+			await ctx.send("Niets is in de aanbieding")  
+		else:
+			await ctx.send(list)
 
 @bot.event
 async def on_message(message):
