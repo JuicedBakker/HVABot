@@ -43,7 +43,9 @@ biertjes = [
   "wi2722/amstel-pilsener-krat"
 ]
 
-BOT_TOKEN = 'ODA2MDY0NTEzNzM1ODUyMDQz.YBkAFA.1l8oJjbNS6Kd2qbgox8_kLwwDsM'
+with open("config.json", "r") as configjsonFile:
+    configData = json.load(configjsonFile)
+    BOT_TOKEN = configData["token"]
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
 activity = discord.Game(name="with myself")
@@ -130,10 +132,18 @@ async def biertje(ctx):
 		product = albert.Product(biertjes[i])
 		if product.is_discounted:
 			list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
+<<<<<<< HEAD
 		if len(list) < 1:
 			await ctx.send("Niets is in de aanbieding")  
 		else:
 			await ctx.send(list)
+=======
+	if len(list) < 1:
+		await ctx.send("Niets is in de aanbieding")  
+	else:
+		await ctx.send(list)
+	
+>>>>>>> d327565c22a56eeb849a1b769d28004a9e427de6
 
 @bot.event
 async def on_message(message):
@@ -146,6 +156,18 @@ async def on_message(message):
 	if "joost" in message.content.lower():
 		await message.channel.send("let op je woorden a mattie")
 	await bot.process_commands(message)
+
+@bot.command()
+async def ah(ctx):
+  list = "Biertjes in de aanbieding:\n"
+  for i in range(1, len(biertjes)):
+    product = albert.Product(biertjes[i])
+    if product.is_discounted:
+      list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
+  if len(list) < 1:
+    await ctx.send("Niets is in de aanbieding")  
+  else:
+    await ctx.send(list)
 
 @bot.command()
 async def les(ctx, dag):
@@ -170,7 +192,10 @@ def create_embed(description, datum, tijdStart, tijdEinde, docenten):
 	if description == 'Research Skills':
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWNlMDgyNjUtYzY4YS00NzA1LWFmMTQtNWJmNzFkY2JiOWU5%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
-	if description == 'Project Agile Developement':
+	elif description == 'Project Agile Developement':
+		linkNaam = "Teams link"
+		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
+	elif description == "Project Agile Development":
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
 	else:
