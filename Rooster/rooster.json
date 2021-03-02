@@ -1,29 +1,5 @@
 [
     {
-        "Description": "Research Skills",
-        "Start date": "2021-03-01",
-        "Start time": "11:10",
-        "End time": "12:00",
-        "Docenten": "Raaphorst, R. van",
-        "Online": "Yes"
-    },
-    {
-        "Description": "Object Oriented Programming 2",
-        "Start date": "2021-03-01",
-        "Start time": "12:50",
-        "End time": "14:30",
-        "Docenten": "Smith, M.",
-        "Online": "Yes"
-    },
-    {
-        "Description": "Essential Skills Nederlands",
-        "Start date": "2021-03-01",
-        "Start time": "14:30",
-        "End time": "16:10",
-        "Docenten": "Kruidhof, S.",
-        "Online": "Yes"
-    },
-    {
         "Description": "Project Agile Development",
         "Start date": "2021-03-02",
         "Start time": "08:30",
