@@ -132,10 +132,10 @@ async def biertje(ctx):
 		product = albert.Product(biertjes[i])
 		if product.is_discounted:
 			list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
-		if len(list) < 1:
-			await ctx.send("Niets is in de aanbieding")  
-		else:
-			await ctx.send(list)
+	if len(list) < 1:
+		await ctx.send("Niets is in de aanbieding")  
+	else:
+		await ctx.send(list)
 
 @bot.event
 async def on_message(message):
