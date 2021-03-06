@@ -16,6 +16,7 @@ import requests
 from requests.models import get_auth_from_url
 import json
 import albert
+import platform
 
 roasts = [
 	", je moeder is een man.",
@@ -125,6 +126,15 @@ async def roast(ctx, user):
 		await ctx.send("Oppassen vriend.")
 
 @bot.command()
+async def info(ctx):
+	embed=discord.Embed(title=f"System information", description=None)
+	embed.add_field(name="OS", value=f"{platform.platform()} ({platform.system()})", inline=False)
+	embed.add_field(name="Processor", value=f"{platform.processor()}", inline=False)
+	await ctx.send(embed=embed)
+
+
+
+@bot.command()
 async def biertje(ctx):
 	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
 	list = "Biertjes in de aanbieding:\n"
@@ -132,10 +142,10 @@ async def biertje(ctx):
 		product = albert.Product(biertjes[i])
 		if product.is_discounted:
 			list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
-		if len(list) < 1:
-			await ctx.send("Niets is in de aanbieding")  
-		else:
-			await ctx.send(list)
+	if len(list) < 1:
+		await ctx.send("Niets is in de aanbieding")  
+	else:
+		await ctx.send(list)
 
 @bot.event
 async def on_message(message):
@@ -151,15 +161,15 @@ async def on_message(message):
 
 @bot.command()
 async def ah(ctx):
-  list = "Biertjes in de aanbieding:\n"
+  listString = "Biertjes in de aanbieding:\n"
   for i in range(1, len(biertjes)):
-    product = albert.Product(biertjes[i])
-    if product.is_discounted:
-      list += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
-  if len(list) < 1:
+    	product = albert.Product(biertjes[i])
+    	if product.is_discounted:
+      		listString += f"- {product.brand} (https://www.ah.nl/producten/product/{biertjes[i]})\n"
+  if len(listString) < 1:
     await ctx.send("Niets is in de aanbieding")  
   else:
-    await ctx.send(list)
+    await ctx.send(listString)
 
 @bot.command()
 async def les(ctx, dag):
