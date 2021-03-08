@@ -197,6 +197,7 @@ async def les(ctx, dag):
 	
 @bot.command()
 async def meme(ctx):
+	path = "memes"
 	random_filename = "memes/" + random.choice(os.listdir(path))
 	await ctx.send(file=discord.File(random_filename))
 
