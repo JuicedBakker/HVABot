@@ -44,6 +44,14 @@ biertjes = [
   "wi2722/amstel-pilsener-krat"
 ]
 
+ids = {
+	"Fred":806064513735852043, 
+	"Joost":322473542182502412, 
+	"Jip":748132840616493086, 
+	"Stefan":393754612722565130
+}
+admins = [ids["Joost"],ids["Jip"],ids["Stefan"]]
+
 with open("config.json", "r") as configjsonFile:
     configData = json.load(configjsonFile)
     BOT_TOKEN = configData["token"]
@@ -97,7 +105,7 @@ async def help(ctx):
 
 @bot.command()
 async def new(ctx, arg2):
-	if (ctx.author.id == 322473542182502412):		
+	if (ctx.author.id == ids["Joost"]):		
 		guild = ctx.message.guild
 		category = await ctx.guild.create_category(arg2)
 		channel = await guild.create_text_channel(f"{arg2}-text", category=category)
@@ -108,7 +116,7 @@ async def new(ctx, arg2):
 
 @bot.command()
 async def clear(ctx, amount: int):
-	if (ctx.author.id == 322473542182502412 or ctx.author.id == 748132840616493086):	
+	if (ctx.author.id in admins):	
 		await ctx.channel.purge(limit=amount)
 		await ctx.channel.send('Messages cleared!') 
 	else:
@@ -132,8 +140,6 @@ async def info(ctx):
 	embed.add_field(name="Processor", value=f"{platform.processor()}", inline=False)
 	await ctx.send(embed=embed)
 
-
-
 @bot.command()
 async def biertje(ctx):
 	await ctx.send(f"{ctx.message.author.mention}, Proost! 🍻")
@@ -153,7 +159,7 @@ async def on_message(message):
 		await message.channel.send("Hou je bek, Fred's bitch.")
 	if "vieze freddy" in message.content.lower():
 		await message.channel.send(random.choice(freddy))
-	if "kanker" in message.content.lower() and message.author.id != 806064513735852043:
+	if "kanker" in message.content.lower() and message.author.id != ids["Fred"]:
 		await message.channel.send("Kanker boef!")
 	if "joost" in message.content.lower():
 		await message.channel.send("let op je woorden a mattie")
@@ -195,9 +201,6 @@ def create_embed(description, datum, tijdStart, tijdEinde, docenten):
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWNlMDgyNjUtYzY4YS00NzA1LWFmMTQtNWJmNzFkY2JiOWU5%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
 	elif description == 'Project Agile Developement':
-		linkNaam = "Teams link"
-		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
-	elif description == "Project Agile Development":
 		linkNaam = "Teams link"
 		link = "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZTkyNzI1YWYtODQ2ZS00MmFjLTllNmMtN2M3NDAyYjM3Njlj%40thread.v2/0?context=%7b%22Tid%22%3a%220907bb1e-21fc-476f-8843-02d09ceb59a7%22%2c%22Oid%22%3a%22565b138c-8d90-4004-8386-ca03ea1be4cb%22%7d"
 	else:
