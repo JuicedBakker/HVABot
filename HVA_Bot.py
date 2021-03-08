@@ -42,7 +42,11 @@ biertjes = [
   "wi210145/heineken-premium-pilsener-krat",
   "wi232949/grolsch-pilsener-krat",
   "wi227163/brand-pilsener-krat",
-  "wi2722/amstel-pilsener-krat"
+  "wi2722/amstel-pilsener-krat",
+  "wi438908/tripel-karmeliet",
+  "wi179046/peroni-nastro-azzurro",
+  "wi489959/cornet-oaked-blond-fles-speciaal-bier",
+  "wi386832/brouwerij-t-ij-ijwit"
 ]
 
 ids = {
