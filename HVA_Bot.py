@@ -17,6 +17,7 @@ from requests.models import get_auth_from_url
 import json
 import albert
 import platform
+import os
 
 roasts = [
 	", je moeder is een man.",
@@ -49,7 +50,7 @@ with open("config.json", "r") as configjsonFile:
     BOT_TOKEN = configData["token"]
 
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
-activity = discord.Game(name="with myself")
+activity = discord.Game(name="!help")
 bot.remove_command('help')
 
 data = []
@@ -188,6 +189,10 @@ async def les(ctx, dag):
 				embedToSend = create_embed(description, datum, tijdStart, tijdEinde, docenten)
 				await ctx.send(embed=embedToSend)
 	
+@bot.command()
+async def meme(ctx):
+	random_filename = "memes/" + random.choice(os.listdir(path))
+	await ctx.send(file=discord.File(random_filename))
 
 
 def create_embed(description, datum, tijdStart, tijdEinde, docenten):
